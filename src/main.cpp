@@ -5,14 +5,19 @@
 #include "Peripherals.h"
 #include "network.h"
 #include "telemetry.h"
-
-
+#include "model.h"
+#include "edge_ai.h"
+#include "optimization.h"
 
 void setup()
 {
 
     Serial.begin(115200);
+
     dht.begin();  // initialise sesnor
+
+    configTime(0,0,"pool.ntp.org","time.nist.gov");
+    
     pinMode(BTN_PLUGIN,INPUT_PULLUP);
     pinMode(BTN_PLUGOUT,INPUT_PULLUP);
     pinMode(RELAY_PIN,OUTPUT);
@@ -40,12 +45,19 @@ void loop()
         last_print = now;
         sample_sensor();
 
+
+        runEdgeAIInference();
+
+        runOptimization(); 
+        
         publishTelemetry();  
+
+        
 
 
     }
     plug_status();
-    update_led_status();
+    updateLeds();
 
     
 }

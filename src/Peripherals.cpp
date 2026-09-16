@@ -23,6 +23,10 @@ void sample_sensor(void)
    {
    current = mapFloat(raw_current , 0 , 4095 , 0 , 32);
    } 
+   else
+   {
+    current = 0;
+   }
    power=voltage*current ;
     
     
@@ -35,6 +39,21 @@ void sample_sensor(void)
    
 
 }
+
+float recentAvgCurrent(void)
+{
+  float sum=0;
+  for(int i=0; i<5; i++)
+  {
+    sum = sum + current;
+
+  } 
+  return sum/5;
+
+}
+
+
+
 bool plugin_flag = 1;
 bool plugout_flag = 1;
 
@@ -45,6 +64,8 @@ void plug_status(void)
    // detect the sw is pressed
    if (pluginReading == LOW && plugin_flag)
       {  
+        
+        sessionStartMs = millis();
         // plug in switch is pressed
         plugin_flag = 0;
 
@@ -85,7 +106,8 @@ void plug_status(void)
      }
    
 }
-void update_led_status(void)
+
+/* void update_led_status(void)
 {
   if(bayStatus == "FREE")
   {
@@ -99,3 +121,4 @@ void update_led_status(void)
 
   }
 }
+*/

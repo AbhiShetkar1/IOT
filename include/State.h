@@ -8,8 +8,23 @@
 extern String bayStatus;
 extern float voltage, current, power, energyWh, temperature;
 
-// ---------------------------------------------------------------------
-// Timing / debounce bookkeeping
-// ---------------------------------------------------------------------
+extern unsigned long sessionStartMs;
 
+// edge ai
+
+extern float predictedArrivalProb ;
+extern int predictedDurationMin ;
+extern int  lastHourOfDay;
+
+
+
+extern String  loadDecision  ;
+extern int throttleLevel ;
+
+extern float predictionThreshold  ;
+extern int peakTariffStartHr ;
+extern int peakTariffEndHr ; 
+extern bool overloadActive ;
+extern int overloadCurrentA ;
+extern int maxStationLoadW ;
 #endif

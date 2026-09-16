@@ -24,7 +24,7 @@ static const char* WIFI_PASS = "";
 static const char* MQTT_SERVER = "mqtt.thingsboard.cloud";
 static const int MQTT_PORT = 1883;
 
-static const char* BAY_ID = "BAY1";
-static const char*TB_TOKEN ="foxsg0zkc79qyxap82l1";
+static const char* BAY_ID = "BAY3";
+static const char*TB_TOKEN ="sax2yz2jr96a1gpyj7fm";
 
 #endif

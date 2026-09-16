@@ -9,6 +9,6 @@ void printval(void);
 void plug_status(void);
 void update_led_status(void);
 void sample_sensor(void);
-
+float recentAvgCurrent(void);
 
 #endif
